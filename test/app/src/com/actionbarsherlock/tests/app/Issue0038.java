@@ -8,24 +8,24 @@ import android.widget.TabHost;
 
 @SuppressWarnings("deprecation")
 public final class Issue0038 extends TabActivity {
-	@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.issue0038);
         
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
         tabHost.addTab(
-        	tabHost.newTabSpec("tab1")
-        	       .setIndicator("First Tab Name")
-        	       .setContent(new Intent(this, InnerActivity.class))
+            tabHost.newTabSpec("tab1")
+                   .setIndicator("First Tab Name")
+                   .setContent(new Intent(this, InnerActivity.class))
         );
     }
-	
-	public static class InnerActivity extends FragmentActivity {
-		@Override
-	    public void onCreate(Bundle savedInstanceState) {
-	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.blank);
-	    }
-	}
+    
+    public static class InnerActivity extends FragmentActivity {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.blank);
+        }
+    }
 }

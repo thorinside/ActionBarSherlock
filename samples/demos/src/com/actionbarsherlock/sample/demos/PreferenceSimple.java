@@ -38,7 +38,7 @@ public class PreferenceSimple extends SherlockPreferenceActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-	@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         

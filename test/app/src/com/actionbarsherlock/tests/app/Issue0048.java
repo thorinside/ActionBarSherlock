@@ -17,7 +17,7 @@ import com.actionbarsherlock.view.MenuInflater;
 public final class Issue0048 extends SherlockActivity {
     private Menu mMenu;
     
-	@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
@@ -28,16 +28,16 @@ public final class Issue0048 extends SherlockActivity {
         pager.setAdapter(new TestAdapter(getSupportFragmentManager()));
         invalidateOptionsMenu();
     }
-	
-	@Override
+    
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-	    mMenu = menu;
+        mMenu = menu;
         return super.onCreateOptionsMenu(menu);
     }
-	
-	public Menu getMenu() {
-	    return mMenu;
-	}
+    
+    public Menu getMenu() {
+        return mMenu;
+    }
 
     static final class TestAdapter extends FragmentPagerAdapter {
         public TestAdapter(FragmentManager fm) {
@@ -53,9 +53,9 @@ public final class Issue0048 extends SherlockActivity {
         public Fragment getItem(int position) {
             return new TestFragment();
         }
-	}
-	
-	public static class TestFragment extends SherlockFragment {
+    }
+    
+    public static class TestFragment extends SherlockFragment {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -71,6 +71,6 @@ public final class Issue0048 extends SherlockActivity {
         public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
             menu.add("Test");
         }
-	    
-	}
+        
+    }
 }

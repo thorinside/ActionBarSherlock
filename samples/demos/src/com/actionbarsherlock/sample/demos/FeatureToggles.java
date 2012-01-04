@@ -16,22 +16,22 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 
 public class FeatureToggles extends SherlockActivity implements ActionBar.TabListener {
-	private static final Random RANDOM = new Random();
-	
-	private int items = 0;
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		for (int i = 0; i < items; i++) {
-			menu.add("Text")
-				.setIcon(R.drawable.ic_title_share_default)
-				.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-		}
-		
-		return super.onCreateOptionsMenu(menu);
-	}
+    private static final Random RANDOM = new Random();
+    
+    private int items = 0;
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        for (int i = 0; i < items; i++) {
+            menu.add("Text")
+                .setIcon(R.drawable.ic_title_share_default)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        }
+        
+        return super.onCreateOptionsMenu(menu);
+    }
 
-	@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_PROGRESS);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
@@ -50,48 +50,48 @@ public class FeatureToggles extends SherlockActivity implements ActionBar.TabLis
         getSupportActionBar().setListNavigationCallbacks(listAdapter, null);
         
         findViewById(R.id.display_progress_show).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setSupportProgressBarVisibility(true);
-				setSupportProgressBarIndeterminateVisibility(false);
-				setSupportProgress(RANDOM.nextInt(8000) + 10);
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                setSupportProgressBarVisibility(true);
+                setSupportProgressBarIndeterminateVisibility(false);
+                setSupportProgress(RANDOM.nextInt(8000) + 10);
+            }
+        });
         findViewById(R.id.display_progress_hide).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setSupportProgressBarVisibility(false);
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                setSupportProgressBarVisibility(false);
+            }
+        });
         findViewById(R.id.display_iprogress_show).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 //Hack to hide the regular progress bar
                 setSupportProgress(Window.PROGRESS_END);
-				setSupportProgressBarIndeterminateVisibility(true);
-			}
-		});
+                setSupportProgressBarIndeterminateVisibility(true);
+            }
+        });
         findViewById(R.id.display_iprogress_hide).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				setSupportProgressBarIndeterminateVisibility(false);
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                setSupportProgressBarIndeterminateVisibility(false);
+            }
+        });
         
         findViewById(R.id.display_items_clear).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				items = 0;
-				invalidateOptionsMenu();
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                items = 0;
+                invalidateOptionsMenu();
+            }
+        });
         findViewById(R.id.display_items_add).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				items += 1;
-				invalidateOptionsMenu();
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                items += 1;
+                invalidateOptionsMenu();
+            }
+        });
         
         findViewById(R.id.display_subtitle_show).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,11 +145,11 @@ public class FeatureToggles extends SherlockActivity implements ActionBar.TabLis
             }
         });
         findViewById(R.id.navigation_tabs).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+            }
+        });
         
         findViewById(R.id.display_home_as_up_show).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,54 +205,54 @@ public class FeatureToggles extends SherlockActivity implements ActionBar.TabLis
         
         Button tabAdd = (Button)findViewById(R.id.display_tab_add);
         tabAdd.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				ActionBar.Tab newTab = getSupportActionBar().newTab();
-				
-				if (RANDOM.nextBoolean()) {
-					newTab.setCustomView(R.layout.tab_custom_view);
-				} else {
-					boolean icon = RANDOM.nextBoolean();
-					if (icon) {
-						newTab.setIcon(R.drawable.ic_title_share_default);
-					}
-					if (!icon || RANDOM.nextBoolean()) {
-						newTab.setText("Text!");
-					}
-				}
-				newTab.setTabListener(FeatureToggles.this);
-				getSupportActionBar().addTab(newTab);
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                ActionBar.Tab newTab = getSupportActionBar().newTab();
+                
+                if (RANDOM.nextBoolean()) {
+                    newTab.setCustomView(R.layout.tab_custom_view);
+                } else {
+                    boolean icon = RANDOM.nextBoolean();
+                    if (icon) {
+                        newTab.setIcon(R.drawable.ic_title_share_default);
+                    }
+                    if (!icon || RANDOM.nextBoolean()) {
+                        newTab.setText("Text!");
+                    }
+                }
+                newTab.setTabListener(FeatureToggles.this);
+                getSupportActionBar().addTab(newTab);
+            }
+        });
         //Add some tabs
         tabAdd.performClick();
         tabAdd.performClick();
         tabAdd.performClick();
         
         findViewById(R.id.display_tab_select).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (getSupportActionBar().getTabCount() > 0) {
-					getSupportActionBar().selectTab(
-							getSupportActionBar().getTabAt(
-									RANDOM.nextInt(getSupportActionBar().getTabCount())
-							)
-					);
-				}
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                if (getSupportActionBar().getTabCount() > 0) {
+                    getSupportActionBar().selectTab(
+                            getSupportActionBar().getTabAt(
+                                    RANDOM.nextInt(getSupportActionBar().getTabCount())
+                            )
+                    );
+                }
+            }
+        });
         findViewById(R.id.display_tab_remove).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				getSupportActionBar().removeTabAt(getSupportActionBar().getTabCount() - 1);
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                getSupportActionBar().removeTabAt(getSupportActionBar().getTabCount() - 1);
+            }
+        });
         findViewById(R.id.display_tab_remove_all).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				getSupportActionBar().removeAllTabs();
-			}
-		});
+            @Override
+            public void onClick(View view) {
+                getSupportActionBar().removeAllTabs();
+            }
+        });
     }
 
     @Override

@@ -37,16 +37,16 @@ public class IndeterminateProgress extends SherlockActivity {
         //Notice how we *MUST* pass TRUE/FALSE objects rather than the native
         //true/false values.
         findViewById(R.id.enable).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-			    setSupportProgressBarIndeterminateVisibility(true);
-			}
-		});
+            @Override
+            public void onClick(View arg0) {
+                setSupportProgressBarIndeterminateVisibility(true);
+            }
+        });
         findViewById(R.id.disable).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-			    setSupportProgressBarIndeterminateVisibility(false);
-			}
-		});
+            @Override
+            public void onClick(View arg0) {
+                setSupportProgressBarIndeterminateVisibility(false);
+            }
+        });
     }
 }
